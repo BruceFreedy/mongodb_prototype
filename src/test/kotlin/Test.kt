@@ -1,6 +1,5 @@
 import com.mongodb.client.model.Filters
 import org.litote.kmongo.*
-import javax.management.Query.eq
 
 
 data class Jedi(val name: String, val age: Int)
@@ -9,7 +8,6 @@ fun main() {
     val before = System.currentTimeMillis()
     val client =
         KMongo.createClient("url") //get com.mongodb.MongoClient new instance
-    val session = client.startSession()
     val database = client.getDatabase("test2") //normal java driver usage
     val col = database.getCollection<Jedi>() //KMongo extension method
     col.insertOne(Jedi("Luke Skywalker", 19))
